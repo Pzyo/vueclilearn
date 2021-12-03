@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 什么时候使用箭头函数
+			// 当一个函数作为参数传入另一个函数时使用箭头函数的情况最多
+			// setTimeout(function () {}, 1000)
+			// setTimeout(() => {}, 1000)
+			
+			// 问题：箭头函数中的this是如何查找的？
+			// 答案：向外层作用域中，一层层查找this，直到有this的定义
+			const obj = {
+				aaa() {
+					setTimeout(function () {
+						console.log(this) // window对象
+					}, 1000);
+					
+					setTimeout(() => console.log(this), 1000)  // obj对象
+					
+					// 第一个输出之所以是window对象，是因为setTimeout是window对象的方法
+					// 通过call回调时，会把window对象传入function，所以就会输出window对象
+					
+					// 而第二个箭头函数没有自己的this，this是往定义时的外层找
+					// 它发现aaa函数有this的定义，所以就直接使用它的this对象，即obj对象
+					
+					// 简而言之就是，箭头函数的this在其定义阶段就能确定
+					
+					// 练习
+					setTimeout(function () {
+						setTimeout(function () {
+							console.log(this) // window对象
+						}, 1000);
+						
+						setTimeout(() => console.log(this), 1000)  // window对象，主要理解此处即可
+					}, 1000);
+					
+					setTimeout(() => {
+						setTimeout(function () {
+							console.log(this) // window对象
+						}, 1000);
+						
+						setTimeout(() => console.log(this), 1000)  // obj对象
+					}, 1000)
+				}
+			}
+			obj.aaa()
+		</script>
+	</body>
+</html>
