@@ -9,7 +9,19 @@
 
 <script>
 	export default {
-		name: 'Profile'
+		name: 'Profile',
+		created() {
+			console.log('Profile created')
+		},
+		destroyed() {
+			console.log('Profile destroyed')
+		},
+		activated() {
+			console.log('activated')
+		},
+		deactivated() {
+			console.log('deactivated')
+		}
 	}
 </script>
 

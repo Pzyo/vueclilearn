@@ -13,7 +13,11 @@
 		
 		<!-- <button type="button" @click="userClick">用户</button> -->
 		<button type="button" @click="profileClick">档案</button>
-		<router-view/>
+		
+		<keep-alive exclude="Profile">
+			<router-view/>
+		</keep-alive>
+		
   </div>
 </template>
 

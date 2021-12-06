@@ -77,13 +77,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 	// 从from跳转到to
 	document.title = to.matched[0].meta.title
-	console.log(to)
+	// console.log(to)
 	next()
 })
 
 // 后置钩子（hook）
 router.afterEach((to, from) => {
-	console.log('---')
+	// console.log('---')
 })
 
 export default router
