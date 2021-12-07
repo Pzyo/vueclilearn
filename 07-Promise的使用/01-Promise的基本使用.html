@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 1. 使用setTimeout
+			// setTimeout(() => {
+			// 	console.log('Hello World')		
+			// 	setTimeout(() => {
+			// 		console.log('Hello Vuejs')
+			// 		setTimeout(() => {
+			// 			console.log('Hello Nodejs')
+			// 		}, 1000)
+			// 	}, 1000)
+			// }, 1000)
+			
+			// 什么情况下会用到Promise？
+			// 一般情况下是有异步操作时，使用Promise对这个异步操作进行封装
+			// new -> 构造函数(1.保存了一些状态信息 2.执行传入的函数)
+			// 在执行传入的回调函数时，会传入两个参数，resolve，reject，这两者本身又是函数
+			new Promise((resolve, reject) => {
+				setTimeout(() => {
+					// 成功的时候调用resolve
+					// resolve('Success')
+					
+					// 失败的使用调用reject
+					reject('Error')
+				}, 1000)
+			}).then((data) => {
+				// 处理逻辑代码
+				console.log(data)
+			}).catch((err) => {
+				console.log(err)
+			})
+			
+		</script>
+	</body>
+</html>
